@@ -10,6 +10,7 @@ Play: https://hanshugli.github.io/gamehub/
 - **Word Ladder**: turn one four-letter word into another by changing one letter at a time, where every step is a word. There is no clock. Tap a letter of the word, then the letter to change it to. "Back a step" undoes, "Give me a step" adds the next word of a shortest way on. Forty hand-picked pairs come first in a mixed order, then puzzles are made up without end.
 - **Balance**: a logic grid of circles and squares, 6 by 6, 8 by 8 or 10 by 10. Never three alike in a line, as many circles as squares in every row and column, and no two rows or columns the same. Every puzzle is made on the spot, has one answer and can be finished by reasoning alone. A broken rule is marked as you go, and "Show me a step" fills one cell and says why.
 - **Decant**: bottles of mixed colours and two empty ones. Tap a bottle, then the bottle to pour into; colour goes onto the same colour or into an empty bottle. Done when every bottle holds one colour. Four, seven or ten colours, every puzzle checked to be possible, with undo and "Show me a pour".
+- **Solitaire**: the classic patience game (Klondike), turning one card or three. Tap a card to send it where it goes, or drag it. Cards slide, turn over and are dealt out one by one; a won game ends with every card hopping in turn. Eight card backs to choose from, undo, "Show me a move", and "Finish it" once every card is in sight.
 
 ## Working on it
 

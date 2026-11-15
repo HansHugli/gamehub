@@ -1,0 +1,118 @@
+.solitaire .play {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px calc(6px + env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) calc(6px + env(safe-area-inset-left));
+}
+/* Its own layer, so cards stacked high never show through a question asked over the page */
+.solitaire .climb { flex: 1; min-height: 0; width: 100%; max-width: 720px; position: relative; touch-action: none; isolation: isolate; }
+.solitaire .desk { flex: none; width: 100%; max-width: 520px; display: flex; flex-direction: column; align-items: center; }
+
+/* The table is measured by the script: --w is a card's width, and every card is placed by --x and --y */
+.table { --w: 48px; --h: calc(var(--w) * 1.42); position: absolute; inset: 0; }
+.slot, .card {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--w);
+  height: var(--h);
+  border-radius: calc(var(--w) * 0.1);
+  transform: translate(var(--x, 0px), var(--y, 0px));
+}
+.slot { border: 2px dashed var(--line); display: grid; place-items: center; color: var(--line); font-size: calc(var(--w) * 0.5); }
+.slot.stock { cursor: pointer; }
+.slot.stock::after { content: "↻"; font-size: calc(var(--w) * 0.5); color: var(--dim); }
+
+.card {
+  border-radius: calc(var(--w) * 0.1);
+  transition: transform 190ms cubic-bezier(0.2, 0.8, 0.3, 1);
+  cursor: pointer;
+  perspective: 600px;
+  touch-action: none;
+  will-change: transform;
+}
+.card.drag { transition: none; cursor: grabbing; }
+.card.snap { transition: none; }
+.card .turn {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform 260ms ease;
+  transform: rotateY(180deg);
+}
+.card.up .turn { transform: rotateY(0deg); }
+.card .front, .card .back {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+.card .front { background: #f7f4ec; color: #1b2230; border: 1px solid #c9c4b6; overflow: hidden; }
+.card.red .front { color: #cf3232; }
+.card .corner {
+  position: absolute;
+  left: 7%;
+  top: 2%;
+  font-size: calc(var(--w) * 0.33);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+.card .pip { position: absolute; left: 0; right: 0; bottom: 6%; text-align: center; font-size: calc(var(--w) * 0.62); line-height: 1; }
+.card .back { transform: rotateY(180deg); border: calc(var(--w) * 0.06) solid #f1eee6; }
+.card.lift .front, .card.lift .back, .card.drag .front { box-shadow: 0 6px 14px rgba(0, 0, 0, 0.55); }
+.card.flash .front { box-shadow: 0 0 0 3px #f0c24a, 0 1px 2px rgba(0, 0, 0, 0.45); }
+.slot.flash { border-color: #f0c24a; }
+.card.flash .back { box-shadow: 0 0 0 3px #f0c24a; }
+.card.no { animation: no 240ms ease-in-out; }
+@keyframes no {
+  25% { margin-left: -5px; }
+  60% { margin-left: 4px; }
+}
+/* A win: every card hops in turn */
+.table.won .card { animation: hop 620ms ease-in-out both; animation-delay: calc(var(--i) * 28ms); }
+@keyframes hop {
+  0%, 100% { margin-top: 0; }
+  40% { margin-top: calc(var(--h) * -0.55); }
+  70% { margin-top: calc(var(--h) * 0.06); }
+}
+
+/* The card backs. Each is drawn with gradients, so there are no picture files to load. */
+.back-lattice { background-color: #17645a; background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.16) 0 2px, transparent 2px 9px), repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.16) 0 2px, transparent 2px 9px); }
+.back-stripes { background-color: #8f2f3a; background-image: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0 3px, transparent 3px 8px); }
+.back-dots { background-color: #2b4a8a; background-image: radial-gradient(circle, rgba(255, 255, 255, 0.5) 1.4px, transparent 1.8px); background-size: 8px 8px; }
+.back-diamonds { background-color: #5a3794; background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 25%, transparent 25%), linear-gradient(225deg, rgba(255, 255, 255, 0.18) 25%, transparent 25%), linear-gradient(315deg, rgba(255, 255, 255, 0.18) 25%, transparent 25%), linear-gradient(45deg, rgba(255, 255, 255, 0.18) 25%, transparent 25%); background-size: 12px 12px; }
+.back-sunrise { background-image: repeating-conic-gradient(from 0deg at 50% 100%, #d9822b 0deg 10deg, #f2b84b 10deg 20deg); }
+.back-night { background-color: #141a29; background-image: radial-gradient(circle at 30% 25%, #fff 0.8px, transparent 1.2px), radial-gradient(circle at 70% 60%, #cfe0ff 0.9px, transparent 1.3px), radial-gradient(circle at 45% 80%, #fff 0.7px, transparent 1.1px), radial-gradient(circle at 78% 22%, #f6e6a8 2.6px, transparent 3px); background-size: 17px 19px, 23px 21px, 13px 29px, 100% 100%; }
+.back-weave { background-color: #3a3f4d; background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.13) 0 3px, transparent 3px 6px), repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.25) 0 3px, transparent 3px 6px); }
+.back-forest { background-color: #1e4d2b; background-image: linear-gradient(60deg, rgba(255, 255, 255, 0.14) 12%, transparent 12.5% 87%, rgba(255, 255, 255, 0.14) 87.5%), linear-gradient(120deg, rgba(255, 255, 255, 0.14) 12%, transparent 12.5% 87%, rgba(255, 255, 255, 0.14) 87.5%); background-size: 14px 24px; }
+
+.swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.swatch { aspect-ratio: 1 / 1.42; border-radius: 8px; border: 3px solid #f1eee6; padding: 0; cursor: pointer; position: relative; }
+.swatch.chosen { outline: 3px solid var(--accent); outline-offset: 2px; }
+.swatch span { position: absolute; left: 0; right: 0; bottom: -1.6em; font-size: 11px; color: var(--dim); text-align: center; }
+.swatches { padding-bottom: 1.4em; row-gap: 26px; }
+
+.solitaire .status { min-height: 2.7em; display: grid; place-items: center; text-align: center; color: var(--dim); font-size: 15px; line-height: 1.3; margin: 6px 0; }
+.solitaire .status.good { color: var(--accent); font-weight: 600; }
+.solitaire .status.bad { color: #e58a6c; }
+.solitaire .tools { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.solitaire .tools .btn { font-size: 14px; padding: 8px 12px; }
+.solitaire .tools .btn:disabled { opacity: 0.4; }
+.solitaire .tools .btn[hidden] { display: none; }
+
+@media (orientation: landscape) and (max-height: 540px) {
+  .solitaire .play { flex-direction: row; align-items: stretch; gap: 12px; }
+  .solitaire .climb { flex: 2.2; }
+  .solitaire .desk { flex: 1; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card, .card .turn { transition: none; }
+  .card.no, .table.won .card { animation: none; }
+}

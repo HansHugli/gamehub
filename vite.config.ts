@@ -13,7 +13,7 @@ export default defineConfig({
   build: {
     target: ["es2020", "safari15"],
     rollupOptions: {
-      input: { hub: here("./index.html"), twofold: here("./twofold/index.html"), ladder: here("./ladder/index.html"), balance: here("./balance/index.html"), decant: here("./decant/index.html") },
+      input: { hub: here("./index.html"), twofold: here("./twofold/index.html"), ladder: here("./ladder/index.html"), balance: here("./balance/index.html"), decant: here("./decant/index.html"), solitaire: here("./solitaire/index.html") },
     },
   },
 });
