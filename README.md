@@ -7,6 +7,7 @@ Play: https://hanshugli.github.io/gamehub/
 ## Games
 
 - **Twofold**: slide numbered tiles on a 4 by 4 board. Two equal tiles that meet join into one of twice the value. The goal is the 4096 tile, and play goes on after it. The game in progress and the best score are kept in the browser. New game sits in the top bar, away from the board, and asks before it ends a game under way.
+- **Word Ladder**: turn one four-letter word into another by changing one letter at a time, where every step is a word. There is no clock. Tap a letter of the word, then the letter to change it to. "Back a step" undoes, "Give me a step" adds the next word of a shortest way on. Forty hand-picked pairs come first in a mixed order, then puzzles are made up without end.
 
 ## Working on it
 
@@ -22,3 +23,7 @@ Each game has its own folder with an `index.html` (for example `twofold/`) and i
 ## Publishing
 
 Every push to `main` builds the site and publishes it to GitHub Pages (`.github/workflows/pages.yml`). `npm run ship` checks, cuts a release with a changelog entry and a tag, builds, and pushes.
+
+## Word list
+
+Word Ladder's words come from SCOWL (Spell Checker Oriented Word Lists) by Kevin Atkinson, by way of the npm package `wordlist-english`. The copyright and permission notices are in `src/ladder/WORDS-COPYRIGHT.txt`. `scripts/make-words.ts` makes `src/ladder/words.ts` from those lists: everyday words (sizes 10 to 35) for puzzles and given steps, and rarer ones (up to size 70) that are also accepted as a step.
