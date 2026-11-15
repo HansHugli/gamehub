@@ -1,0 +1,86 @@
+.balance .play {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px calc(12px + env(safe-area-inset-right)) calc(12px + env(safe-area-inset-bottom)) calc(12px + env(safe-area-inset-left));
+}
+.balance .climb { flex: 1; min-height: 0; width: 100%; display: grid; place-items: center; }
+.balance .desk { flex: none; width: 100%; max-width: 520px; display: flex; flex-direction: column; align-items: center; }
+
+.balance .board {
+  --size: 320px;
+  --n: 6;
+  --gap: calc(var(--size) * 0.012);
+  width: var(--size);
+  height: var(--size);
+  display: grid;
+  grid-template-columns: repeat(var(--n), 1fr);
+  grid-template-rows: repeat(var(--n), 1fr);
+  gap: var(--gap);
+  padding: var(--gap);
+  border-radius: calc(var(--size) * 0.03);
+  background: var(--panel-2);
+}
+.cell {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 14%;
+  background: var(--bg);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+/* A given cell: darker, and it does not answer a tap */
+.cell.given { background: #070a10; cursor: default; }
+@media (prefers-color-scheme: light) {
+  .cell.given { background: #c3ccdb; }
+}
+.cell::before {
+  content: "";
+  width: 62%;
+  height: 62%;
+  transform: scale(0);
+  transition: transform 90ms ease-out, border-radius 90ms ease-out, background-color 90ms ease-out;
+}
+/* The two marks differ in shape as well as colour */
+.cell.v1::before { transform: scale(1); border-radius: 50%; background: #2bb3a0; }
+.cell.v2::before { transform: scale(1); border-radius: 16%; background: #9257e0; }
+.cell.wrong { box-shadow: inset 0 0 0 2px #e5674f; }
+.cell.shown { animation: shown 900ms ease-out; }
+@keyframes shown {
+  0%, 60% { box-shadow: inset 0 0 0 3px #f0c24a; }
+  100% { box-shadow: inset 0 0 0 3px rgba(240, 194, 74, 0); }
+}
+.board.done .cell::before { animation: done 420ms ease-out; }
+@keyframes done {
+  40% { transform: scale(1.14); }
+}
+
+.balance .status { min-height: 3.9em; display: grid; place-items: center; text-align: center; color: var(--dim); font-size: 15px; line-height: 1.3; margin: 10px 0 6px; }
+.balance .status.good { color: var(--accent); font-weight: 600; }
+.balance .status.bad { color: #e58a6c; }
+.balance .tools, .balance .after { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.balance .tools .btn { font-size: 14px; padding: 8px 12px; }
+.balance .tools .btn:disabled { opacity: 0.4; }
+.balance .after[hidden], .balance .tools[hidden] { display: none; }
+
+.sizes { display: flex; gap: 8px; flex-wrap: wrap; }
+.sizes .btn { flex: 1; white-space: nowrap; }
+.rules { margin: 0; padding-left: 1.3em; color: var(--text); line-height: 1.45; display: grid; gap: 4px; }
+
+/* A phone on its side: the grid on the left, the words and buttons on the right */
+@media (orientation: landscape) and (max-height: 540px) {
+  .balance .play { flex-direction: row; align-items: stretch; gap: 16px; }
+  .balance .climb { flex: 1.2; }
+  .balance .desk { flex: 1; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cell::before { transition: none; }
+  .cell.shown, .board.done .cell::before { animation: none; }
+}

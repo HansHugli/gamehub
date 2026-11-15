@@ -48,3 +48,7 @@
 .art-ladder { grid-template-columns: repeat(4, 1fr); gap: 2px; padding: 6px 5px; align-content: center; }
 .art-ladder i { font-size: 9px; border-radius: 3px; aspect-ratio: 1; background: #3b4c6b; }
 .art-ladder i:nth-child(7) { background: #1d6f63; }
+.art-balance { grid-template-columns: repeat(3, 1fr); gap: 3px; padding: 7px; }
+.art-balance i { background: #2bb3a0; border-radius: 50%; aspect-ratio: 1; width: 78%; justify-self: center; align-self: center; }
+.art-balance i:nth-child(2), .art-balance i:nth-child(4), .art-balance i:nth-child(6), .art-balance i:nth-child(9) { background: #9257e0; border-radius: 18%; }
+.art-balance i:nth-child(5) { background: transparent; }

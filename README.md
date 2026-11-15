@@ -8,6 +8,7 @@ Play: https://hanshugli.github.io/gamehub/
 
 - **Twofold**: slide numbered tiles on a 4 by 4 board. Two equal tiles that meet join into one of twice the value. The goal is the 4096 tile, and play goes on after it. The game in progress and the best score are kept in the browser. New game sits in the top bar, away from the board, and asks before it ends a game under way.
 - **Word Ladder**: turn one four-letter word into another by changing one letter at a time, where every step is a word. There is no clock. Tap a letter of the word, then the letter to change it to. "Back a step" undoes, "Give me a step" adds the next word of a shortest way on. Forty hand-picked pairs come first in a mixed order, then puzzles are made up without end.
+- **Balance**: a logic grid of circles and squares, 6 by 6, 8 by 8 or 10 by 10. Never three alike in a line, as many circles as squares in every row and column, and no two rows or columns the same. Every puzzle is made on the spot, has one answer and can be finished by reasoning alone. A broken rule is marked as you go, and "Show me a step" fills one cell and says why.
 
 ## Working on it
 
