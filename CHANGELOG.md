@@ -2,6 +2,12 @@
 
 All notable changes to Game Hub are documented in this file.
 
+## [0.1.2](https://github.com/HansHugli/gamehub/compare/v0.1.1...v0.1.2) (2026-11-15)
+
+### Features
+
+* **balance:** Balance, a logic grid of circles and squares ([2a3ed0d](https://github.com/HansHugli/gamehub/commit/2a3ed0da189bdaeef36382c61c257f10630af0ca))
+
 ## [0.1.1](https://github.com/HansHugli/gamehub/compare/v0.1.0...v0.1.1) (2026-11-15)
 
 ### Features
