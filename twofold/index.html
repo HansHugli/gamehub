@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#10151f" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Twofold" />
+    <title>Twofold</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2310151f'/%3E%3Crect x='5' y='5' width='10' height='10' rx='2.5' fill='%234cc2b0'/%3E%3Crect x='17' y='5' width='10' height='10' rx='2.5' fill='%232f4a6b'/%3E%3Crect x='5' y='17' width='10' height='10' rx='2.5' fill='%232f4a6b'/%3E%3Crect x='17' y='17' width='10' height='10' rx='2.5' fill='%238e3fd0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="../src/base.css" />
+    <link rel="stylesheet" href="../src/twofold/twofold.css" />
+  </head>
+  <body class="twofold">
+    <header class="bar">
+      <a class="btn back" href="../" aria-label="Back to all games">‹ Games</a>
+      <h1>Twofold</h1>
+      <button class="btn" id="new" type="button">New game</button>
+    </header>
+    <main class="play" id="play">
+      <div class="stats">
+        <div class="stat"><span>Score</span><b id="score">0</b></div>
+        <div class="stat"><span>Best</span><b id="best">0</b></div>
+        <div class="stat"><span>Top tile</span><b id="top">0</b></div>
+      </div>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+      <div class="board" id="board" role="img" aria-label="The board">
+        <div class="cells" aria-hidden="true"></div>
+        <div class="tiles" id="tiles"></div>
+      </div>
+      <p class="hint">Swipe anywhere below the top bar, or use the arrow keys.</p>
+    </main>
+    <div class="veil" id="confirm" hidden>
+      <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+        <h2 id="confirm-title">Start a new game?</h2>
+        <p id="confirm-text"></p>
+        <div class="dialog-row">
+          <button class="btn" id="confirm-no" type="button">Keep playing</button>
+          <button class="btn btn-primary" id="confirm-yes" type="button">New game</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="../src/twofold/main.ts"></script>
+  </body>
+</html>

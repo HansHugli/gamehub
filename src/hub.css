@@ -1,0 +1,47 @@
+.hub {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: calc(28px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) calc(24px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
+}
+.hub header h1 { font-size: 30px; letter-spacing: -0.01em; }
+.hub header p { color: var(--dim); margin-top: 4px; }
+.games { display: grid; gap: 12px; margin-top: 24px; }
+.game {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px;
+  cursor: pointer;
+}
+.game:active { transform: scale(0.99); }
+.about { display: grid; gap: 3px; flex: 1; min-width: 0; }
+.about strong { font-size: 18px; }
+.about span { color: var(--dim); font-size: 14px; line-height: 1.35; }
+.go { font-size: 28px; color: var(--dim); }
+.art {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: var(--panel-2);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 5px;
+}
+.art i {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+}
+.art-twofold i:nth-child(1), .art-twofold i:nth-child(2) { background: #3b4c6b; }
+.art-twofold i:nth-child(3) { background: #2f5f8a; }
+.art-twofold i:nth-child(4) { background: #1f7f93; }
+.hub footer { margin-top: 28px; color: var(--dim); font-size: 12px; }
