@@ -52,3 +52,7 @@
 .art-balance i { background: #2bb3a0; border-radius: 50%; aspect-ratio: 1; width: 78%; justify-self: center; align-self: center; }
 .art-balance i:nth-child(2), .art-balance i:nth-child(4), .art-balance i:nth-child(6), .art-balance i:nth-child(9) { background: #9257e0; border-radius: 18%; }
 .art-balance i:nth-child(5) { background: transparent; }
+.art-decant { grid-template-columns: repeat(3, 1fr); gap: 5px; padding: 9px 9px 8px; }
+.art-decant i { border: 1.5px solid #5b6a86; border-top: 0; border-radius: 2px 2px 7px 7px; background: linear-gradient(to top, #e5484d 0 34%, #f2c94c 34% 67%, #3b6fe0 67% 100%); }
+.art-decant i:nth-child(2) { background: linear-gradient(to top, #3b6fe0 0 34%, #e5484d 34% 67%, transparent 67%); }
+.art-decant i:nth-child(3) { background: linear-gradient(to top, #f2c94c 0 34%, transparent 34%); }

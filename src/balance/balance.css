@@ -69,8 +69,6 @@
 .balance .tools .btn:disabled { opacity: 0.4; }
 .balance .after[hidden], .balance .tools[hidden] { display: none; }
 
-.sizes { display: flex; gap: 8px; flex-wrap: wrap; }
-.sizes .btn { flex: 1; white-space: nowrap; }
 .rules { margin: 0; padding-left: 1.3em; color: var(--text); line-height: 1.45; display: grid; gap: 4px; }
 
 /* A phone on its side: the grid on the left, the words and buttons on the right */

@@ -1,0 +1,93 @@
+.decant .play {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px calc(12px + env(safe-area-inset-right)) calc(12px + env(safe-area-inset-bottom)) calc(12px + env(safe-area-inset-left));
+}
+.decant .climb { flex: 1; min-height: 0; width: 100%; display: grid; place-items: center; }
+.decant .desk { flex: none; width: 100%; max-width: 520px; display: flex; flex-direction: column; align-items: center; }
+
+.shelf {
+  --w: 44px;
+  --cols: 6;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--w));
+  column-gap: calc(var(--w) * 0.34);
+  row-gap: calc(var(--w) * 0.75);
+  /* Room above the top row for a bottle that has been picked up */
+  padding-top: calc(var(--w) * 0.45);
+  justify-content: center;
+}
+.bottle {
+  width: var(--w);
+  height: calc(var(--w) * 3.5);
+  padding: calc(var(--w) * 0.08);
+  padding-top: calc(var(--w) * 0.3);
+  border: 2px solid #5b6a86;
+  border-top-color: transparent;
+  border-radius: calc(var(--w) * 0.12) calc(var(--w) * 0.12) calc(var(--w) * 0.5) calc(var(--w) * 0.5);
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  flex-direction: column-reverse;
+  cursor: pointer;
+  transition: transform 120ms ease-out, border-color 120ms ease-out;
+  position: relative;
+  overflow: hidden;
+}
+/* The bottle's lip */
+.bottle::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: -2px;
+  height: 3px;
+  border-radius: 2px;
+  background: #5b6a86;
+}
+.bottle.held { transform: translateY(calc(var(--w) * -0.4)); border-color: var(--accent); }
+.bottle.held::before { background: var(--accent); }
+.bottle.sorted { border-color: #8fa3c7; }
+.bottle.to { border-color: #f0c24a; }
+.bottle.to::before { background: #f0c24a; }
+.bottle.no { animation: no 240ms ease-in-out; }
+@keyframes no {
+  25% { transform: translateX(-5px); }
+  60% { transform: translateX(4px); }
+}
+.layer { flex: none; height: 25%; }
+.layer:first-child { border-radius: 0 0 calc(var(--w) * 0.38) calc(var(--w) * 0.38); }
+.layer.in { animation: fill 200ms ease-out; transform-origin: bottom; }
+@keyframes fill {
+  from { transform: scaleY(0); opacity: 0.4; }
+}
+.c1 { background: #e5484d; }
+.c2 { background: #f2c94c; }
+.c3 { background: #3b6fe0; }
+.c4 { background: #2f9e5b; }
+.c5 { background: #9257e0; }
+.c6 { background: #f08a24; }
+.c7 { background: #4fc3f7; }
+.c8 { background: #e86bb0; }
+.c9 { background: #a3d94a; }
+.c10 { background: #a67c5b; }
+
+.decant .status { min-height: 2.7em; display: grid; place-items: center; text-align: center; color: var(--dim); font-size: 15px; line-height: 1.3; margin: 10px 0 6px; }
+.decant .status.good { color: var(--accent); font-weight: 600; }
+.decant .status.bad { color: #e58a6c; }
+.decant .tools, .decant .after { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.decant .tools .btn { font-size: 14px; padding: 8px 12px; }
+.decant .tools .btn:disabled { opacity: 0.4; }
+.decant .after[hidden], .decant .tools[hidden] { display: none; }
+
+@media (orientation: landscape) and (max-height: 540px) {
+  .decant .play { flex-direction: row; align-items: stretch; gap: 16px; }
+  .decant .climb { flex: 1.6; }
+  .decant .desk { flex: 1; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bottle { transition: none; }
+  .bottle.no, .layer.in { animation: none; }
+}

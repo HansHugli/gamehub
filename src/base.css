@@ -96,3 +96,6 @@ body.game-page {
 .dialog h2 { font-size: 19px; }
 .dialog p { color: var(--dim); line-height: 1.4; }
 .dialog-row { display: flex; gap: 10px; justify-content: flex-end; margin-top: 6px; }
+/* The choices in a new-puzzle question */
+.sizes { display: flex; gap: 8px; flex-wrap: wrap; }
+.sizes .btn { flex: 1; white-space: nowrap; }
