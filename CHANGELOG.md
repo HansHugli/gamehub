@@ -2,6 +2,12 @@
 
 All notable changes to Game Hub are documented in this file.
 
+## [0.1.3](https://github.com/HansHugli/gamehub/compare/v0.1.2...v0.1.3) (2026-11-15)
+
+### Features
+
+* **decant:** Decant, a bottle sorting game ([85d06b0](https://github.com/HansHugli/gamehub/commit/85d06b0df9bf1ee5be9bc4354dbfad2ee94b4867))
+
 ## [0.1.2](https://github.com/HansHugli/gamehub/compare/v0.1.1...v0.1.2) (2026-11-15)
 
 ### Features
