@@ -1,6 +1,6 @@
 {
   "name": "gamehub",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": true,
   "description": "Game Hub: small browser games that play well on a phone.",
   "type": "module",

@@ -2,6 +2,12 @@
 
 All notable changes to Game Hub are documented in this file.
 
+## [0.1.4](https://github.com/HansHugli/gamehub/compare/v0.1.3...v0.1.4) (2026-11-15)
+
+### Features
+
+* **solitaire:** Solitaire with moving cards and a choice of card backs ([1d6ab3c](https://github.com/HansHugli/gamehub/commit/1d6ab3c47a5d68047574522f0cb36b9ff7ba89ec))
+
 ## [0.1.3](https://github.com/HansHugli/gamehub/compare/v0.1.2...v0.1.3) (2026-11-15)
 
 ### Features
