@@ -2,6 +2,12 @@
 
 All notable changes to Game Hub are documented in this file.
 
+## [0.1.6](https://github.com/HansHugli/gamehub/compare/v0.1.5...v0.1.6) (2026-11-16)
+
+### Features
+
+* **sudoku:** Sudoku where tinted squares hold even numbers ([13b678c](https://github.com/HansHugli/gamehub/commit/13b678c604bdc129fc238b87ba510711144780de))
+
 ## [0.1.5](https://github.com/HansHugli/gamehub/compare/v0.1.4...v0.1.5) (2026-11-16)
 
 ### Features
