@@ -1,0 +1,135 @@
+.sudoku {
+  --plain: #10151f;
+  --tint: #33296a;
+  --given: #e8edf6;
+  --mine: #5fd6c4;
+  --bad: #ff8a70;
+  --rule: #55627c;
+}
+@media (prefers-color-scheme: light) {
+  .sudoku {
+    --plain: #ffffff;
+    --tint: #d3c8f4;
+    --given: #172033;
+    --mine: #0d6a5d;
+    --bad: #c93a1d;
+    --rule: #6d7890;
+  }
+}
+.sudoku .play {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px calc(12px + env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) calc(12px + env(safe-area-inset-left));
+}
+.sudoku .climb { flex: 1; min-height: 0; width: 100%; display: grid; place-items: center; }
+.sudoku .desk { flex: none; width: 100%; max-width: 440px; display: flex; flex-direction: column; align-items: center; }
+
+/* Thin lines between squares, thicker ones between boxes: the lines are the board showing through */
+.sudoku .board {
+  --size: 320px;
+  --n: 9;
+  --cell: calc(var(--size) / var(--n));
+  width: var(--size);
+  height: var(--size);
+  display: grid;
+  grid-template-columns: repeat(var(--n), 1fr);
+  grid-template-rows: repeat(var(--n), 1fr);
+  gap: 1px;
+  padding: 3px;
+  border-radius: 6px;
+  background: var(--rule);
+}
+.sq {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: var(--plain);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: calc(var(--cell) * 0.58);
+  line-height: 1;
+  color: var(--mine);
+  font-weight: 600;
+}
+.sq.even { background-color: var(--tint); }
+.sq.edge-r { margin-right: 2px; }
+.sq.edge-b { margin-bottom: 2px; }
+.sq.given { color: var(--given); font-weight: 700; }
+.sq.wrong { color: var(--bad); }
+/* The row, column and box of the chosen square, and every square holding the same number */
+.sq.peer { background-image: linear-gradient(rgba(140, 165, 215, 0.16), rgba(140, 165, 215, 0.16)); }
+.sq.same { background-image: linear-gradient(rgba(76, 194, 176, 0.38), rgba(76, 194, 176, 0.38)); }
+.sq.sel { box-shadow: inset 0 0 0 3px var(--accent); z-index: 1; }
+.sq:focus-visible { outline: none; }
+.sq .digit { animation: placed 140ms ease-out; }
+@keyframes placed {
+  from { transform: scale(0.6); opacity: 0.3; }
+}
+.sq .notes {
+  position: absolute;
+  inset: 4%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  font-size: calc(var(--cell) * 0.26);
+  font-weight: 600;
+  color: var(--dim);
+}
+.sq.even .notes { color: var(--text); opacity: 0.75; }
+.sq.shown { animation: shown 1100ms ease-out; }
+@keyframes shown {
+  0%, 60% { box-shadow: inset 0 0 0 3px #f0c24a; }
+  100% { box-shadow: inset 0 0 0 3px rgba(240, 194, 74, 0); }
+}
+.board.done .sq .digit { animation: done 460ms ease-out; }
+@keyframes done {
+  40% { transform: scale(1.25); }
+}
+
+.sudoku .status { min-height: 2.7em; display: grid; place-items: center; text-align: center; color: var(--dim); font-size: 15px; line-height: 1.3; margin: 8px 0 6px; }
+.sudoku .status.good { color: var(--accent); font-weight: 600; }
+.sudoku .status.bad { color: var(--bad); }
+
+/* The numbers to tap. The even ones carry the tint, like the squares they go in. */
+.pad { --cols: 6; width: 100%; display: grid; grid-template-columns: repeat(var(--cols), 1fr); gap: 6px; }
+.pad[hidden] { display: none; }
+.key {
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  font-size: 21px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.key:active { transform: scale(0.95); }
+.key.even { background: var(--tint); }
+.key.full { opacity: 0.32; }
+.key.word { font-size: 13px; font-weight: 600; }
+.key.wide { grid-column: span 2; }
+.key.on { background: var(--accent); color: var(--accent-text); border-color: transparent; }
+
+.sudoku .tools, .sudoku .after { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+.sudoku .tools .btn { font-size: 14px; padding: 8px 12px; }
+.sudoku .tools .btn:disabled { opacity: 0.4; }
+.sudoku .after[hidden], .sudoku .tools[hidden] { display: none; }
+.rules { margin: 0; padding-left: 1.3em; color: var(--text); line-height: 1.45; display: grid; gap: 4px; }
+
+/* A phone on its side: the grid on the left, the numbers and buttons on the right */
+@media (orientation: landscape) and (max-height: 540px) {
+  .sudoku .play { flex-direction: row; align-items: stretch; gap: 16px; }
+  .sudoku .climb { flex: 1.1; }
+  .sudoku .desk { flex: 1; justify-content: center; }
+  .key { height: 38px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sq .digit, .sq.shown, .board.done .sq .digit { animation: none; }
+}

@@ -12,6 +12,7 @@ Play: https://hanshugli.github.io/gamehub/
 - **Decant**: bottles of mixed colours and two empty ones. Tap a bottle, then the bottle to pour into; colour goes onto the same colour or into an empty bottle. Done when every bottle holds one colour. Four, seven or ten colours, every puzzle checked to be possible, with undo and "Show me a pour".
 - **Solitaire**: the classic patience game (Klondike), turning one card or three. Tap a card to send it where it goes, or drag it. Cards slide, turn over and are dealt out one by one; a won game ends with every card hopping in turn. Eight card backs to choose from, undo, "Show me a move", and "Finish it" once every card is in sight.
 - **Cube Paint**: a 3D puzzle. Swipe to roll a cube over a floor of tiles; the face that lands underneath stamps its colour on the tile, over whatever was there. Tiles with a coloured rim ask for that colour, and the level is done when each has it. The way the cube came decides how it sits, so the route is the puzzle. Twenty levels that grow (three colours, then six, then holes in the floor) and more made without end after them, each with a par, undo and "Show me a roll". Drawn with three.js.
+- **Sudoku**: with a twist. Every square that holds an even number is tinted, and that is part of the puzzle, so only about fourteen numbers are given on a 9 by 9 grid. Small (6 by 6), gentle (never needs a guess) and tricky. Notes, undo, and "Show me a step" with the reason for it.
 
 ## Working on it
 

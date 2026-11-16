@@ -63,3 +63,6 @@
 .art-solitaire i:nth-child(3) { left: 31px; }
 .art-cube { display: grid; grid-template-columns: 1fr; place-items: center; padding: 6px; }
 .art-cube svg { width: 100%; height: 100%; display: block; }
+.art-sudoku { grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 6px; }
+.art-sudoku i { background: #10151f; border-radius: 3px; font-size: 11px; }
+.art-sudoku i:nth-child(2), .art-sudoku i:nth-child(3), .art-sudoku i:nth-child(4), .art-sudoku i:nth-child(7), .art-sudoku i:nth-child(8) { background: #4a3aa0; }
