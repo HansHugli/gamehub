@@ -1,0 +1,84 @@
+.cube .play {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* The whole stage takes a swipe, not just the floor */
+.cube .stage { flex: 1; min-height: 0; width: 100%; position: relative; touch-action: none; }
+.cube .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; outline: none; }
+.cube .nogl { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--dim); }
+.cube .nogl[hidden] { display: none; }
+.cube .desk {
+  flex: none;
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 calc(12px + env(safe-area-inset-right)) calc(12px + env(safe-area-inset-bottom)) calc(12px + env(safe-area-inset-left));
+}
+.cube .status { min-height: 2.7em; display: grid; place-items: center; text-align: center; color: var(--dim); font-size: 15px; line-height: 1.3; margin: 4px 0 8px; }
+.cube .status.good { color: var(--accent); font-weight: 600; }
+.cube .row { display: flex; align-items: center; justify-content: center; gap: 18px; width: 100%; }
+.cube .side { display: grid; }
+.cube .tools, .cube .after { grid-area: 1 / 1; display: flex; flex-direction: column; gap: 8px; }
+.cube .after { justify-content: center; }
+.cube .tools .btn, .cube .after .btn { font-size: 14px; padding: 8px 12px; white-space: nowrap; }
+.cube .tools .btn:disabled { opacity: 0.4; }
+/* Hidden, yet still taking its room, so the picture of the faces never jumps sideways */
+.cube .tools[hidden], .cube .after[hidden] { display: flex; visibility: hidden; }
+
+/* The cube laid flat: the face on each side of "top" is the one a roll that way puts under */
+.net {
+  --s: 30px;
+  flex: none;
+  display: grid;
+  grid-template-columns: repeat(4, var(--s));
+  grid-template-rows: repeat(3, var(--s));
+  gap: 3px;
+}
+.net i {
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  background: var(--panel-2);
+  transition: background-color 140ms ease-out;
+}
+.net i b { font-size: 7px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; color: rgba(10, 14, 22, 0.78); }
+.net i[data-place="2"] { grid-area: 1 / 2; }
+.net i[data-place="5"] { grid-area: 2 / 1; }
+.net i[data-place="0"] { grid-area: 2 / 2; }
+.net i[data-place="4"] { grid-area: 2 / 3; }
+.net i[data-place="1"] { grid-area: 2 / 4; position: relative; left: 5px; }
+.net i[data-place="3"] { grid-area: 3 / 2; }
+.net .c1, .levels .c1 { background: #e5484d; }
+.net .c2 { background: #3b6fe0; }
+.net .c3 { background: #f2c94c; }
+.net .c4 { background: #2f9e5b; }
+.net .c5 { background: #f08a24; }
+.net .c6 { background: #9257e0; }
+
+/* The levels to choose from */
+.levels { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; max-height: 44vh; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 2px; }
+.levels .btn { padding: 9px 0; font-size: 15px; background: var(--panel-2); position: relative; }
+.levels .btn.done { border-color: var(--accent); color: var(--accent); }
+.levels .btn.par { background: var(--accent); color: var(--accent-text); border-color: transparent; }
+.levels .btn.here { outline: 2px solid var(--text); outline-offset: 1px; }
+.cube .dialog p + p { margin-top: -2px; }
+
+@media (orientation: landscape) and (max-height: 540px) {
+  .cube .play { flex-direction: row; align-items: stretch; }
+  .cube .stage { flex: 1.5; width: auto; }
+  .cube .desk { flex: 1; justify-content: center; padding-top: 8px; }
+  .cube .row { flex-direction: column; gap: 10px; }
+  .cube .tools, .cube .after { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+}
+@media (max-height: 560px) and (orientation: portrait) {
+  .net { --s: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .net i { transition: none; }
+}

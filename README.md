@@ -11,6 +11,7 @@ Play: https://hanshugli.github.io/gamehub/
 - **Balance**: a logic grid of circles and squares, 6 by 6, 8 by 8 or 10 by 10. Never three alike in a line, as many circles as squares in every row and column, and no two rows or columns the same. Every puzzle is made on the spot, has one answer and can be finished by reasoning alone. A broken rule is marked as you go, and "Show me a step" fills one cell and says why.
 - **Decant**: bottles of mixed colours and two empty ones. Tap a bottle, then the bottle to pour into; colour goes onto the same colour or into an empty bottle. Done when every bottle holds one colour. Four, seven or ten colours, every puzzle checked to be possible, with undo and "Show me a pour".
 - **Solitaire**: the classic patience game (Klondike), turning one card or three. Tap a card to send it where it goes, or drag it. Cards slide, turn over and are dealt out one by one; a won game ends with every card hopping in turn. Eight card backs to choose from, undo, "Show me a move", and "Finish it" once every card is in sight.
+- **Cube Paint**: a 3D puzzle. Swipe to roll a cube over a floor of tiles; the face that lands underneath stamps its colour on the tile, over whatever was there. Tiles with a coloured rim ask for that colour, and the level is done when each has it. The way the cube came decides how it sits, so the route is the puzzle. Twenty levels that grow (three colours, then six, then holes in the floor) and more made without end after them, each with a par, undo and "Show me a roll". Drawn with three.js.
 
 ## Working on it
 
