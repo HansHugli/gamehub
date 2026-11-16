@@ -2,6 +2,12 @@
 
 All notable changes to Game Hub are documented in this file.
 
+## [0.1.5](https://github.com/HansHugli/gamehub/compare/v0.1.4...v0.1.5) (2026-11-16)
+
+### Features
+
+* **cube:** Cube Paint, a 3D puzzle of rolling a cube that stamps its colours ([1385160](https://github.com/HansHugli/gamehub/commit/13851605c6c6a20c7fbe10cf0466a7743d8374f0))
+
 ## [0.1.4](https://github.com/HansHugli/gamehub/compare/v0.1.3...v0.1.4) (2026-11-15)
 
 ### Features
